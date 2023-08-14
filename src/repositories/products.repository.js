@@ -16,3 +16,7 @@ export function getAvailableProducts() {
 export function getSpecificProduct(id) {
   return db.query("SELECT products.*, name, phone, email FROM products JOIN users on products.owner_id = users.id WHERE products.id=$1;", [id]);
 };
+
+export function markProductAsSelled(id) {
+  return db.query("UPDATE products SET selled=true WHERE id=$1;", [id]);
+};
