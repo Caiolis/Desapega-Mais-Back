@@ -1,6 +1,6 @@
 // Repositories
 import { searchSessionByToken } from "../repositories/sessions.repository.js";
-import { addProductToDb } from "../repositories/products.repository.js";
+import { addProductToDb, getAvailableProducts } from "../repositories/products.repository.js";
 
 export async function addProduct(req, res) {
   try {
@@ -13,3 +13,12 @@ export async function addProduct(req, res) {
   }
 };
 
+export async function getAllProducts(req, res) {
+  try {
+    const query = await getAvailableProducts();
+
+    res.status(200).send(query.rows);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};

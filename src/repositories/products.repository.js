@@ -7,3 +7,6 @@ export function addProductToDb(body, OwnerId) {
   );
 }
 
+export function getAvailableProducts() {
+  return db.query("SELECT * FROM products WHERE selled<>true;")
+}
