@@ -7,3 +7,8 @@ export const signupSchema = joi.object({
   email: joi.string().email().required(),
   password: joi.string().min(3).required()
 });
+
+export const signinSchema = joi.object({
+  email: joi.string().required().email(),
+  password: joi.string().required().min(3)
+});
