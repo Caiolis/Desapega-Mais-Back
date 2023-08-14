@@ -9,7 +9,7 @@ export function addProductToDb(body, OwnerId) {
 
 export function getAvailableProducts() {
   return db.query(
-    "SELECT name, product_name, price, photo_url FROM products JOIN users on products.owner_id = users.id WHERE selled<>true;"
+    "SELECT products.id, name, product_name, price, photo_url FROM products JOIN users on products.owner_id = users.id WHERE selled<>true;"
   );
 };
 
@@ -20,3 +20,7 @@ export function getSpecificProduct(id) {
 export function markProductAsSelled(id) {
   return db.query("UPDATE products SET selled=true WHERE id=$1;", [id]);
 };
+
+export function selectAllFromSpecificProduct(id) {
+  return db.query("SELECT * FROM products WHERE id=$1;", [id]);
+}
