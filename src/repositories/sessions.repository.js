@@ -20,3 +20,7 @@ export function createSession(userID) {
   ]);
   return token;
 }
+
+export function searchSessionByToken(token) {
+  return db.query(`SELECT * FROM sessions WHERE token=$1`, [token]);
+}
